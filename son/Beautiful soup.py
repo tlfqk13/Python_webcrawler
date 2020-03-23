@@ -24,6 +24,21 @@ elem=driver.find_element_by_link_text('블로그')
 elem.click()
 
 #STEP 4 현재 페이지에 있는 내용을 화면에 출력하기
+'''full_html=driver.page_source
+soup=BeautifulSoup(full_html,'html.parser')
+post_title=soup.select('dl > dt > a')
+
+for i in post_title:
+    print(i.text.strip())
+    print("\n")
+'''
+#STEP 5 현재 페이지에 있는 내용을 txt 형식으로 파일에 저장하기
+
+orig_stdout=sys.stdout
+f=open(f_name,'a',encoding='UTF-8')
+sys.stdout=f
+time.sleep(1)
+
 full_html=driver.page_source
 soup=BeautifulSoup(full_html,'html.parser')
 post_title=soup.select('dl > dt > a')
@@ -31,3 +46,9 @@ post_title=soup.select('dl > dt > a')
 for i in post_title:
     print(i.text.strip())
     print("\n")
+
+sys.stdout=orig_stdout
+f.close()
+
+print("완료")
+
