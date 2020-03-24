@@ -3,8 +3,10 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 import sys
+import pandas as pd
 
 query_text = input('크롤링할 키워드는 무엇입니까?')
+#fc_name=input("검색 결과를 저장할 csv 파일 경로를 입력 하시오 : ")
 
 path = 'C:\\Users\\tlfqk\\PycharmProjects\\untitled3\\chromedriver.exe'
 driver = webdriver.Chrome(path)
@@ -23,18 +25,34 @@ elem.click()
 
 
 # STEP 5 현재 페이지에 있는 내용을 txt 형식으로 파일에 저장하기
-# sys.stdout=f
-# time.sleep(1)
+#sys.stdout=f
+#time.sleep(1)
 
 full_html = driver.page_source
 soup = BeautifulSoup(full_html, 'html.parser')
 
-content_List=soup.find('li',id='sp_blog_1')
+post_Title = soup.select('ul>li>dl')
+post_Date=soup.select('dl>dd.txt_inline')
+post_Example=soup.select('dl>dd.sh_blog_passage')
 
-post_Title = content_List.select('dl>dt>a')
 for i in post_Title:
+    title=i.find('a',{'class':'sh_blog_title _sp_each_url _sp_each_title'}).get_text()
+    date=i.find('dd',{'class':'txt_inline'}).get_text()
+    print(title.strip(),date.strip())
+    print("=======================================")
+
+'''
+for i in post_Date:
     print(i.text)
 
-#post_date = soup.select('dl>dd.txt_inline')
-#post_exapmle = soup.select('dl>dd.sh_blog_passage')
+for i in post_Example:
+    print(i.text)
 
+
+post_Data=pd.DataFrame()
+post_Data['제목']=post_Title
+post_Data['내용']=post_Example
+
+post_Data.to_csv(fc_name,encoding='utf-8-sig')
+print("csv 파일 저장 경로 : %s"%fc_name)
+'''
