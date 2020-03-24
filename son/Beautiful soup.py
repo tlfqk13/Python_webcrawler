@@ -5,7 +5,10 @@ import time
 import sys
 
 query_text=input('크롤링할 키워드는 무엇입니까?')
-f_name=input('검색 결과를 저장할 파일경로와 이름을 지정하세요 : ')
+f_name=input('검색 결과를 저장할 txt 파일경로와 이름을 지정하세요 : ')
+#fc_name=input('검색 결과를 저장할 csv 파일경로와 이름을 지정하세요 : ')
+#fx_name=input('검색 결과를 저장할 xls 파일경로와 이름을 지정하세요 : ')
+
 
 path='C:\\Users\\tlfqk\\PycharmProjects\\untitled3\\chromedriver.exe'
 driver=webdriver.Chrome(path)
@@ -13,7 +16,6 @@ driver=webdriver.Chrome(path)
 url='https://www.naver.com'
 driver.get(url)
 time.sleep(2)
-
 
 searchBar=driver.find_element_by_id('query')
 
@@ -34,21 +36,30 @@ for i in post_title:
 '''
 #STEP 5 현재 페이지에 있는 내용을 txt 형식으로 파일에 저장하기
 
-orig_stdout=sys.stdout
-f=open(f_name,'a',encoding='UTF-8')
-sys.stdout=f
-time.sleep(1)
+#sys.stdout=f
+#time.sleep(1)
 
 full_html=driver.page_source
 soup=BeautifulSoup(full_html,'html.parser')
-post_title=soup.select('dl > dt > a')
+post_title=soup.select('dl>dt>a')
+post_date=soup.select('dl>dd.txt_inline')
+post_exapmle=soup.select('dl>dd.sh_blog_passage')
 
+'''
 for i in post_title:
     print(i.text.strip())
     print("\n")
+print("==========================")
+for i in post_date:
+    print(i.text.strip())
+    print("\n")
+print("==========================")
+for i in post_exapmle:
+    print(i.text.strip())
+    print("\n")'''
 
-sys.stdout=orig_stdout
-f.close()
-
-print("완료")
-
+#STEP 5 각 항목별로 분리하여 추출하고 변수에 할당하기
+no=1
+no2=[]
+contents2=[]
+tags2=[]
