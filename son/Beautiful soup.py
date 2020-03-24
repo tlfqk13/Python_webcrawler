@@ -42,24 +42,25 @@ time.sleep(1)
 
 full_html=driver.page_source
 soup=BeautifulSoup(full_html,'html.parser')
-post_title=soup.select('dl>dt>a')
-post_date=soup.find('dd',class_='txt_inline')
+
+post_List=soup.find('ul',class_='type01')
+
+for i in post_List:
+    print(i.text.strip())
+    print('\n')
+
+print(post_List)
+
+post_title=soup.find('a','sh_blog_title _sp_each_url _sp_each_title')
+#post_title.get_text()
+
+post_date=soup.find('dd','txt_inline')
+#post_date.get_text()
+
+
 post_exapmle=soup.select('dl>dd.sh_blog_passage')
 
-post_title2=[]
-
-for i in post_title:
-    post_title2.append(post_title)
-    print(i.get_text())
-    print("\n")
-
-print(post_date)
-
 '''
-print("==========================")
-for i in post_date:
-    print(i.text.strip())
-    print("\n")
 print("==========================")
 for i in post_exapmle:
     print(i.text.strip())
@@ -69,3 +70,7 @@ sys.stdout=orig_stdout
 f.close()
 
 #STEP 5 각 항목별로 분리하여 추출하고 변수에 할당하기
+no=1
+no2=[]
+post_title2=[]
+post_date2=[]
