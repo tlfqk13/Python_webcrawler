@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import sys
 
+
 query_text=input('크롤링할 키워드는 무엇입니까?')
 f_name=input('검색 결과를 저장할 txt 파일경로와 이름을 지정하세요 : ')
 #fc_name=input('검색 결과를 저장할 csv 파일경로와 이름을 지정하세요 : ')
@@ -41,36 +42,27 @@ sys.stdout=f
 time.sleep(1)
 
 full_html=driver.page_source
+
 soup=BeautifulSoup(full_html,'html.parser')
 
-post_List=soup.find('ul',class_='type01')
+#post_Title=soup.select('dl>dt>a')
 
-for i in post_List:
-    print(i.text.strip())
-    print('\n')
-
-print(post_List)
-
-post_title=soup.find('a','sh_blog_title _sp_each_url _sp_each_title')
-#post_title.get_text()
-
-post_date=soup.find('dd','txt_inline')
-#post_date.get_text()
+print("++++++++++++++++++++++++++++++++++")
+post_Title2=soup.find('a',class_='sh_blog_title _sp_each_url _sp_each_title').get_text()
+print("날짜: ",post_Title2.strip())
+post_date=soup.find('dd','txt_inline').get_text()
+print("날짜: ",post_date.strip())
+post_exapmle2=soup.find('dd',class_='sh_blog_passage').get_text()
+print('썸네일: ',post_exapmle2)
+print("+++++++++++++++++++++++++++++++++++")
 
 
-post_exapmle=soup.select('dl>dd.sh_blog_passage')
-
-'''
-print("==========================")
-for i in post_exapmle:
-    print(i.text.strip())
-    print("\n")'''
+no=1
+no2=[]
+list0=[]
+list1=[]
 
 sys.stdout=orig_stdout
 f.close()
 
 #STEP 5 각 항목별로 분리하여 추출하고 변수에 할당하기
-no=1
-no2=[]
-post_title2=[]
-post_date2=[]
