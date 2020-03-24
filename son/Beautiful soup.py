@@ -41,26 +41,50 @@ f=open(f_name,'w',encoding='UTF-8')
 sys.stdout=f
 time.sleep(1)
 
+no=1
+no2=[]
+
+post_Title2=[]
+post_date2=[]
+post_example2=[]
 full_html=driver.page_source
 
 soup=BeautifulSoup(full_html,'html.parser')
 
 #post_Title=soup.select('dl>dt>a')
 
+content_List=soup.find('div',class_='blog section _blogBase _prs_blg')
+print(content_List)
+
+
 print("++++++++++++++++++++++++++++++++++")
-post_Title2=soup.find('a',class_='sh_blog_title _sp_each_url _sp_each_title').get_text()
-print("날짜: ",post_Title2.strip())
-post_date=soup.find('dd','txt_inline').get_text()
+'''
+post_Title2=content_List.find('a',class_='sh_blog_title _sp_each_url _sp_each_title').get_text()
+print("제목: ",post_Title2.strip())
+post_date=content_List.find('dd','txt_inline').get_text()
 print("날짜: ",post_date.strip())
-post_exapmle2=soup.find('dd',class_='sh_blog_passage').get_text()
+post_exapmle2=content_List.find('dd',class_='sh_blog_passage').get_text()
 print('썸네일: ',post_exapmle2)
+'''
 print("+++++++++++++++++++++++++++++++++++")
 
+for i in content_List:
+    no2.append(no)
+    print('번호 ',no)
 
-no=1
-no2=[]
-list0=[]
-list1=[]
+    post_Title = content_List.find('a', class_='sh_blog_title _sp_each_url _sp_each_title').get_text()
+    post_Title2.append(post_Title)
+    print('내용 : ',post_Title.strip())
+
+    post_date=content_List.find('dd','txt_inline').get_text()
+    post_date2.append(post_date)
+    print('날짜 : ',post_date.strip())
+
+    post_example=content_List.find('dd',class_='sh_blog_passage').get_text()
+    post_example2.append(post_example)
+    print('썸네일 : ',post_example.strip())
+
+    no+=1
 
 sys.stdout=orig_stdout
 f.close()

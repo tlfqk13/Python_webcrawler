@@ -4,6 +4,7 @@
     <list default="true" id="52168320-eb47-427b-bbd9-be4c44e8a952" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/son/Beautiful soup.py" beforeDir="false" afterPath="$PROJECT_DIR$/son/Beautiful soup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/soup.py" beforeDir="false" afterPath="$PROJECT_DIR$/soup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/soup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+            <state relative-caret-position="327">
+              <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -51,11 +52,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/son/Beautiful soup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="213">
+              <caret line="74" column="102" lean-forward="true" selection-start-line="74" selection-start-column="3" selection-end-line="74" selection-end-column="102" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -66,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/bs4/element.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="870" selection-start-line="870" selection-end-line="870" />
+            <state relative-caret-position="270">
+              <caret line="2080" selection-start-line="2080" selection-end-line="2080" />
             </state>
           </provider>
         </entry>
@@ -91,15 +92,15 @@
         <option value="$PROJECT_DIR$/htmltest.py" />
         <option value="$PROJECT_DIR$/test.html" />
         <option value="$PROJECT_DIR$/data.py" />
-        <option value="$PROJECT_DIR$/soup.py" />
         <option value="$PROJECT_DIR$/son/Beautiful soup.py" />
+        <option value="$PROJECT_DIR$/soup.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="251" />
-    <option name="width" value="1590" />
-    <option name="height" value="1040" />
+    <option name="x" value="-8" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -151,7 +152,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Beautiful soup">
+  <component name="RunManager" selected="Python.soup">
     <configuration name="Beautiful soup" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="untitled3" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -238,8 +239,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Beautiful soup" />
         <item itemvalue="Python.soup" />
+        <item itemvalue="Python.Beautiful soup" />
         <item itemvalue="Python.data" />
         <item itemvalue="Python.htmltest" />
       </list>
@@ -263,7 +264,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585032196686</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="reset">
+      <created>1585038269511</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1585038269511</updated>
+    </task>
+    <task id="LOCAL-00003" summary="i_can_do_it">
+      <created>1585048682949</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1585048682949</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -291,7 +306,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="find" />
-    <option name="LAST_COMMIT_MESSAGE" value="find" />
+    <MESSAGE value="reset" />
+    <MESSAGE value="i_can_do_it" />
+    <option name="LAST_COMMIT_MESSAGE" value="i_can_do_it" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/AppData/Roaming/Python/Python37/site-packages/selenium/webdriver/chrome/webdriver.py">
@@ -367,10 +384,10 @@
     <entry file="file://$PROJECT_DIR$/htmltest.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/soup.py">
+    <entry file="file://$PROJECT_DIR$/son/Beautiful soup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="32" column="25" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+        <state relative-caret-position="213">
+          <caret line="74" column="102" lean-forward="true" selection-start-line="74" selection-start-column="3" selection-end-line="74" selection-end-column="102" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -379,15 +396,15 @@
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/bs4/element.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="870" selection-start-line="870" selection-end-line="870" />
+        <state relative-caret-position="270">
+          <caret line="2080" selection-start-line="2080" selection-end-line="2080" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/son/Beautiful soup.py">
+    <entry file="file://$PROJECT_DIR$/soup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        <state relative-caret-position="327">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
