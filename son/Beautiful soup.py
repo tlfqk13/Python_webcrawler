@@ -35,20 +35,27 @@ for i in post_title:
     print("\n")
 '''
 #STEP 5 현재 페이지에 있는 내용을 txt 형식으로 파일에 저장하기
-
-#sys.stdout=f
-#time.sleep(1)
+orig_stdout=sys.stdout
+f=open(f_name,'w',encoding='UTF-8')
+sys.stdout=f
+time.sleep(1)
 
 full_html=driver.page_source
 soup=BeautifulSoup(full_html,'html.parser')
 post_title=soup.select('dl>dt>a')
-post_date=soup.select('dl>dd.txt_inline')
+post_date=soup.find('dd',class_='txt_inline')
 post_exapmle=soup.select('dl>dd.sh_blog_passage')
 
-'''
+post_title2=[]
+
 for i in post_title:
-    print(i.text.strip())
+    post_title2.append(post_title)
+    print(i.get_text())
     print("\n")
+
+print(post_date)
+
+'''
 print("==========================")
 for i in post_date:
     print(i.text.strip())
@@ -58,8 +65,7 @@ for i in post_exapmle:
     print(i.text.strip())
     print("\n")'''
 
+sys.stdout=orig_stdout
+f.close()
+
 #STEP 5 각 항목별로 분리하여 추출하고 변수에 할당하기
-no=1
-no2=[]
-contents2=[]
-tags2=[]

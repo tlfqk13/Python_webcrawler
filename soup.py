@@ -1,15 +1,49 @@
-import csv
-#-*- coding: utf-8 -*-
-import os
-import pandas as pd
-print (os.getcwd())
-print (os.listdir())
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+import sys
+
+query_text = input('크롤링할 키워드는 무엇입니까?')
+f_name = input('검색 결과를 저장할 txt 파일경로와 이름을 지정하세요 : ')
 
 
-#f=open("C:\\Users\\tlfqk\\PycharmProjects\\untitled3\\son\\subject.csv")
-#f=open("C:\\Users\\tlfqk\\PycharmProjects\\untitled3\\son\\subject.csv",encoding="utf-8")
+path = 'C:\\Users\\tlfqk\\PycharmProjects\\untitled3\\chromedriver.exe'
+driver = webdriver.Chrome(path)
 
-#f=open("C:\\Users\\tlfqk\\PycharmProjects\\untitled3\\son\\서울교통공사_혼잡도_20171231.csv")
+url = 'https://www.naver.com'
+driver.get(url)
+time.sleep(2)
 
-data_seoul=pd.read_csv("data_seoul.csv",encoding ='cp949')
+searchBar = driver.find_element_by_id('query')
 
+searchBar.send_keys(query_text)
+searchBar.send_keys(Keys.ENTER)
+
+elem = driver.find_element_by_link_text('블로그')
+elem.click()
+
+
+# STEP 5 현재 페이지에 있는 내용을 txt 형식으로 파일에 저장하기
+# sys.stdout=f
+# time.sleep(1)
+
+full_html = driver.page_source
+soup = BeautifulSoup(full_html, 'html.parser')
+post_title = soup.select()
+#post_date = soup.select('dl>dd.txt_inline')
+#post_exapmle = soup.select('dl>dd.sh_blog_passage')
+
+for i in post_title:
+    print(i.text.strip())
+    print("\n")
+
+    '''
+print("==========================")
+for i in post_date:
+    print(i.text.strip())
+    print("\n")
+print("==========================")
+for i in post_exapmle:
+    print(i.text.strip())
+    print("\n")'''
