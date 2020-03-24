@@ -35,11 +35,23 @@ post_Title = soup.select('ul>li>dl')
 post_Date=soup.select('dl>dd.txt_inline')
 post_Example=soup.select('dl>dd.sh_blog_passage')
 
+title2=[]
+date2=[]
+example2=[]
+
 for i in post_Title:
     title=i.find('a',{'class':'sh_blog_title _sp_each_url _sp_each_title'}).get_text()
+    title2.append(title)
+    print('제목 ',title.strip())
     date=i.find('dd',{'class':'txt_inline'}).get_text()
-    print(title.strip(),date.strip())
-    print("=======================================")
+    date2.append(date)
+    print('날짜 : ',date.strip())
+    example=i.find('dd',{'class':'sh_blog_passage'}).get_text()
+    example2.append(example)
+    print('썸네일 ',example.strip())
+    print("\n")
+
+
 
 '''
 for i in post_Date:
