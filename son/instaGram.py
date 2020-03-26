@@ -17,6 +17,7 @@ print("="*80)
 print("\n")
 
 query_text='instagram 헤쉬테그'
+
 #cnt=int(input('1.크롤링 할 건수는 몇건입니까?'))
 #f_dir=input('2.파일을 저장할 폴더명만 쓰세요: ')
 
@@ -41,10 +42,11 @@ driver.get(loginUrl)
 driver.implicitly_wait(3)
 
 
+
 #사전 계정 정보 정의
 username='01049020719'
 userpw='ahqltm36@@'
-hashTag='해쉬태그'
+hashTag='Liverpoolfc'
 
 #로그인 정보 입력
 driver.find_element_by_name('username').send_keys(username)
@@ -52,7 +54,19 @@ driver.find_element_by_name('password').send_keys(userpw)
 time.sleep(2)
 driver.find_element_by_xpath('/html/body/div[1]/section/main/div/article/div/div[1]/div/form/div[4]/button/div').click()
 
-
 time.sleep(2)
-url = "https://www.instagram.com/explore/tags/국립발레단/"
-driver.get(url)
+tagurl = 'https://www.instagram.com/explore/tags/'+hashTag+'/'
+driver.get(tagurl)
+
+# 스크롤 기능 구현 (인스타그램처럼 무한 스크롤같은 플랫폼에 적합)
+SCROLL_PAUSE_TIME = 5
+last_height = driver.execute_script('return document.body.scrollHeight')
+while True:
+    driver.execute_script("window.scrollTo(0,document.body.scrollHeight);")
+    time.sleep(SCROLL_PAUSE_TIME)
+
+    new_height = driver.execute_script("return document.body.scrollHeight")
+
+    if new_height == last_height:
+        break
+    last_height = new_height
