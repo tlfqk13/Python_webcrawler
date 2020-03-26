@@ -1,17 +1,46 @@
+
+#step 1. 라이브러리 로딩
 from bs4 import BeautifulSoup
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.keys import Keys
 import time
-import sys
+from selenium.webdriver.common.keys import Keys
+import math
+import numpy
 import pandas as pd
+import random
+import os
+import pprint as pp
+import json
+import sys
 
-chrome_options=Options()
-chrome_options.add_experimental_option("debuggerAddress","127.0.0.1:9222")
+
+print("="*80)
+print("8. instagram 헤쉬테그 정보 수집하기")
+print("="*80)
+print("\n")
+query_text='instagram 헤쉬테그'
 path = 'C:\\Users\\tlfqk\\PycharmProjects\\untitled3\\chromedriver.exe'
-driver = webdriver.Chrome(path,options=chrome_options)
+f_name=input('검색결과를 저장할 경로를 입력하세요')
+driver = webdriver.Chrome(path)
+hashTag='안양역카페'
+tagurl = 'https://www.instagram.com/explore/tags/'+hashTag+'/'
+driver.get(tagurl)
+time.sleep(2)
+orig_stdout=sys.stdout
+f=open(f_name,'w',encoding='UTF-8')
+sys.stdout=f
+time.sleep(1)
+html=driver.page_source
+soup=BeautifulSoup(html,'html.parser')
+tag=soup.find('img')
+srcList=tag.get('src')
+tag2=soup.select('img')
+tag3=soup.find_all('img')
 
-url = 'https://www.naver.com'
-driver.get(url)
-searchBar = driver.find_element_by_class_name('ico_search_submit').click()
+for i in tag3:
+    print(i.get('src'))
 
+print(srcList)
+print("###")
+sys.stdout=orig_stdout
+f.close()

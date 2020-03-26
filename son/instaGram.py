@@ -9,6 +9,8 @@ import numpy
 import pandas as pd
 import random
 import os
+import pprint as pp
+import json
 
 #step 2. 검색어 키워드를 입력 받고 저장할 폴더와 파일명을 설정
 print("="*80)
@@ -33,30 +35,53 @@ s='%04d-%02d-%02d-%02d-%02d-%02d'%(now.tm_year,now.tm_mon,now.tm_mday,now.tm_hou
 #step 3. 크롬 드라이버를 사용해서 웹 브라우저를 실행합니다
 s_time=time.time()
 #인스타그램 로그인 URL
-loginUrl='https://www.instagram.com/accounts/login/'
+#loginUrl='https://www.instagram.com/accounts/login/'
 
 path = 'C:\\Users\\tlfqk\\PycharmProjects\\untitled3\\chromedriver.exe'
 driver = webdriver.Chrome(path)
 
-driver.get(loginUrl)
-driver.implicitly_wait(3)
-
+#driver.get(loginUrl)
+#driver.implicitly_wait(3)
 
 
 #사전 계정 정보 정의
-username='01049020719'
-userpw='ahqltm36@@'
-hashTag='Liverpoolfc'
+#username='01049020719'
+#userpw='ahqltm36@@'
+hashTag='안양역카페'
+
 
 #로그인 정보 입력
-driver.find_element_by_name('username').send_keys(username)
-driver.find_element_by_name('password').send_keys(userpw)
-time.sleep(2)
-driver.find_element_by_xpath('/html/body/div[1]/section/main/div/article/div/div[1]/div/form/div[4]/button/div').click()
-
-time.sleep(2)
+#driver.find_element_by_name('username').send_keys(username)
+#driver.find_element_by_name('password').send_keys(userpw)
+#time.sleep(3)
+#driver.find_element_by_xpath('/html/body/div[1]/section/main/div/article/div/div[1]/div/form/div[4]/button/div').click()
 tagurl = 'https://www.instagram.com/explore/tags/'+hashTag+'/'
 driver.get(tagurl)
+html=driver.page_source
+soup=BeautifulSoup(html,'html.parser')
+contentList=soup.select('div')
+print(contentList)
+#인기있는 사진 9장
+
+#driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div/div[1]/div[1]/a/div/div[2]').click()
+
+'''
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div/div[1]/div[2]/a/div/div[2]').click()
+driver.get(tagurl)
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[2]/div/div[1]/div[3]/a/div/div[2]').click()
+driver.get(tagurl)
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[1]/div/div/div[2]/div[1]/a/div/div[2]').click()
+driver.get(tagurl)
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[1]/div/div/div[2]/div[2]/a/div/div[2]').click()
+driver.get(tagurl)
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[1]/div/div/div[2]/div[3]/a/div/div[2]').click()
+driver.get(tagurl)
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[1]/div/div/div[3]/div[1]/a/div/div[2]').click()
+driver.get(tagurl)
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[1]/div/div/div[3]/div[2]/a/div/div[2]').click()
+driver.get(tagurl)
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/article/div[1]/div/div/div[3]/div[3]/a/div/div[2]').click()
+
 
 # 스크롤 기능 구현 (인스타그램처럼 무한 스크롤같은 플랫폼에 적합)
 SCROLL_PAUSE_TIME = 5
@@ -70,3 +95,4 @@ while True:
     if new_height == last_height:
         break
     last_height = new_height
+'''
