@@ -22,7 +22,7 @@ query_text='instagram 헤쉬테그'
 path = 'C:\\Users\\tlfqk\\PycharmProjects\\untitled3\\chromedriver.exe'
 f_name=input('검색결과를 저장할 경로를 입력하세요')
 driver = webdriver.Chrome(path)
-hashTag='안양역카페'
+hashTag='valenciacf'
 tagurl = 'https://www.instagram.com/explore/tags/'+hashTag+'/'
 driver.get(tagurl)
 time.sleep(2)
@@ -36,11 +36,18 @@ tag=soup.find('img')
 srcList=tag.get('src')
 tag2=soup.select('img')
 tag3=soup.find_all('img')
+hashTag_collector=soup.select('script')
 
-for i in tag3:
-    print(i.get('src'))
+#for i in tag3:
+#    print(i.get('src'))
 
-print(srcList)
+#print(srcList)
 print("###")
+#3
+for i in hashTag_collector:
+    print(i.text.split("window._sharedData = {"))
 sys.stdout=orig_stdout
 f.close()
+#jsonObj=json.loads(data)
+
+
