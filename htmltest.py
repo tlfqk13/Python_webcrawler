@@ -3,6 +3,7 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
+import rhinoMorph
 from selenium.webdriver.common.keys import Keys
 import math
 import numpy
@@ -12,6 +13,7 @@ import os
 import pprint as pp
 import json
 import sys
+import nltk
 
 
 print("="*80)
@@ -37,17 +39,33 @@ srcList=tag.get('src')
 tag2=soup.select('img')
 tag3=soup.find_all('img')
 hashTag_collector=soup.select('script')
+hashTagList=[]
+hashTagList2=[]
 
 #for i in tag3:
 #    print(i.get('src'))
 
 #print(srcList)
 print("###")
+count=0
+serch='#'
+
+
 #3
 for i in hashTag_collector:
-    print(i.text.split("window._sharedData = {"))
+    hashTagList.append(i.text.split("window._sharedData = {"))
+
+for i in hashTagList[7]:
+    hashTagList2.append(i)
+
+for i in hashTagList2:
+    print(i)
+
+#print(hashTagList[7])
+#print("###"*30)
+#print(hashTag_collector)
+print("###"*30)
+print(count)
+
 sys.stdout=orig_stdout
 f.close()
-#jsonObj=json.loads(data)
-
-
