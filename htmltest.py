@@ -3,7 +3,6 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
-import rhinoMorph
 from selenium.webdriver.common.keys import Keys
 import math
 import numpy
@@ -14,6 +13,9 @@ import pprint as pp
 import json
 import sys
 import nltk
+from nltk.tokenize import RegexpTokenizer
+from nltk.tokenize import TweetTokenizer
+from nltk.tokenize import word_tokenize
 
 
 print("="*80)
@@ -46,26 +48,40 @@ hashTagList2=[]
 #    print(i.get('src'))
 
 #print(srcList)
-print("###")
 count=0
-serch='#'
-
 
 #3
 for i in hashTag_collector:
     hashTagList.append(i.text.split("window._sharedData = {"))
 
-for i in hashTagList[7]:
-    hashTagList2.append(i)
-
-for i in hashTagList2:
-    print(i)
 
 #print(hashTagList[7])
 #print("###"*30)
 #print(hashTag_collector)
-print("###"*30)
-print(count)
+no=1
+tknzr=TweetTokenizer()
+tknzr2=word_tokenize(str(hashTagList[7]))
+ss=tknzr.tokenize(str(hashTagList[7]))
+sss=nltk.pos_tag(ss)
 
+#sss=list(set(ss))
+
+'''
+for i in ss:
+    print(i)
+    print('번호 ',no)
+    no+=1
+'''
+aaa= [i for i in ss if "#" in i]
+print(aaa)
 sys.stdout=orig_stdout
 f.close()
+print(type(ss))
+print(len(ss))
+print(ss.count('#valenciacf'))
+print(ss.count('#arsenal'))
+print(ss.count('#'))
+print('####')
+print(type(sss))
+print(len(sss))
+
